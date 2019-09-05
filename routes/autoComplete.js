@@ -32,13 +32,31 @@ autoCompleteRouter.get("/", function(req, res, next) {
           location_coordinates: item.geometry.location
         };
       });
-      response = {
-        success: true,
-        status: "OK",
-        markerData: Object.assign({}, ...dataArray),
-        result_count: dataArray.length
-      };
-      dataStore.push(dataArray);
+      let markerData = Object.assign({}, ...dataArray);
+      if (Object.keys(markerData).length) {
+        const index = dataStore.findIndex(event => event.id === markerData.id);
+        if (index === -1) {
+          dataStore.push(markerData);
+          response = {
+            success: true,
+            status: "OK",
+            message: "Location added"
+          };
+        } else {
+          dataStore[index] = markerData;
+          response = {
+            success: true,
+            status: "OK",
+            message: "Location exists"
+          };
+        }
+      } else {
+        response = {
+          success: false,
+          status: "OK",
+          message: "Location not found"
+        };
+      }
       res.status(200);
       res.json(response);
     })

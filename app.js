@@ -12,12 +12,17 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const GoogleMaps = require("@google/maps");
 
 /**
- * import googleMap config and set as global
+ * import googleMap config
  */
 let googleMapsConfig = require("./config/googleMapsConfig.json");
-global.googleMapsConfig = googleMapsConfig;
+const googleMapsClient = GoogleMaps.createClient({
+  key: googleMapsConfig.api_key,
+  Promise: Promise
+});
+global.googleMapsClient = googleMapsClient;
 
 /**
  * Create a data store and set as global
@@ -29,7 +34,7 @@ global.dataStore = dataStore;
  * import route for api
  */
 const indexRouter = require("./routes/index");
-const autoCompleteRouter = require("./routes/autoComplete");
+const searchRouter = require("./routes/search");
 const markersCrudRouter = require("./routes/markersCrud");
 
 /**
@@ -53,7 +58,7 @@ MarkIt.use(express.static(path.join(__dirname, "public")));
  * add routes to the middleware chain
  */
 MarkIt.use("/", indexRouter);
-MarkIt.use("/autocomplete/:query", autoCompleteRouter);
+MarkIt.use("/search/:query", searchRouter);
 MarkIt.use("/markers", markersCrudRouter);
 
 /**

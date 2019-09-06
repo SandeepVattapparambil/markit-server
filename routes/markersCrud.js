@@ -3,12 +3,6 @@ const markersCrudRouter = express.Router({
   mergeParams: true
 });
 
-let GoogleMaps = require("@google/maps");
-const googleMapsClient = GoogleMaps.createClient({
-  key: googleMapsConfig.api_key,
-  Promise: Promise
-});
-
 /**
  * Read all
  */

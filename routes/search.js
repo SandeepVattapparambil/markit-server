@@ -1,24 +1,18 @@
 var express = require("express");
-var autoCompleteRouter = express.Router({
+var searchRouter = express.Router({
   mergeParams: true
 });
 
-let GoogleMaps = require("@google/maps");
-const googleMapsClient = GoogleMaps.createClient({
-  key: googleMapsConfig.api_key,
-  Promise: Promise
-});
-
-const generateUniqueId = lat => {
+const generateUniqueId = string => {
   return parseInt(
-    lat
+    string
       .toString()
       .split(".")
       .join("")
   );
 };
 
-autoCompleteRouter.get("/", function(req, res, next) {
+searchRouter.get("/", function(req, res, next) {
   let response = {};
   googleMapsClient
     .geocode({ address: req.params.query })
@@ -39,21 +33,21 @@ autoCompleteRouter.get("/", function(req, res, next) {
           response = {
             success: true,
             status: "OK",
-            message: "Location added"
+            message: "Marker added"
           };
         } else {
           dataStore[index] = markerData;
           response = {
             success: true,
             status: "OK",
-            message: "Location exists"
+            message: "Marker exists"
           };
         }
       } else {
         response = {
           success: false,
           status: "OK",
-          message: "Location not found"
+          message: "Marker not found"
         };
       }
       res.status(200);
@@ -69,4 +63,4 @@ autoCompleteRouter.get("/", function(req, res, next) {
     });
 });
 
-module.exports = autoCompleteRouter;
+module.exports = searchRouter;

@@ -12,7 +12,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const GoogleMaps = require("@google/maps");
 
 /**
  * import geoCode service

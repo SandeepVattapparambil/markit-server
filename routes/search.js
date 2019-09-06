@@ -14,7 +14,6 @@ const generateUniqueId = string => {
 
 searchRouter.get("/", function(req, res, next) {
   let response = {};
-
   GEOCODE.getGeoCode(req.params.query)
     .then(data => {
       let dataArray = data.map(item => {

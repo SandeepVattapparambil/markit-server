@@ -21,6 +21,7 @@ markersCrudRouter.get("/", function(req, res, next) {
  * Edit
  */
 markersCrudRouter.put("/:id", function(req, res, next) {
+  let response = {};
   GEOCODE.getGeoCode(req.body.payload)
     .then(data => {
       let dataArray = data.map(item => {

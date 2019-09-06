@@ -15,14 +15,10 @@ const logger = require("morgan");
 const GoogleMaps = require("@google/maps");
 
 /**
- * import googleMap config
+ * import geoCode service
  */
-let googleMapsConfig = require("./config/googleMapsConfig.json");
-const googleMapsClient = GoogleMaps.createClient({
-  key: googleMapsConfig.api_key,
-  Promise: Promise
-});
-global.googleMapsClient = googleMapsClient;
+const geoCode = require("./services/geoCode");
+global.GEOCODE = geoCode;
 
 /**
  * Create a data store and set as global

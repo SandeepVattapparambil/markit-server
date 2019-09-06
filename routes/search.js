@@ -14,11 +14,10 @@ const generateUniqueId = string => {
 
 searchRouter.get("/", function(req, res, next) {
   let response = {};
-  googleMapsClient
-    .geocode({ address: req.params.query })
-    .asPromise()
+
+  GEOCODE.getGeoCode(req.params.query)
     .then(data => {
-      let dataArray = data.json.results.map(item => {
+      let dataArray = data.map(item => {
         return {
           id: generateUniqueId(item.geometry.location.lat),
           formatted_address: item.formatted_address,

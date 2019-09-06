@@ -5,6 +5,7 @@ const googleMapsClient = GoogleMaps.createClient({
   key: googleMapsConfig.api_key,
   Promise: Promise
 });
+
 const geoCodeLib = {};
 geoCodeLib.getGeoCode = query => {
   return googleMapsClient

@@ -21,11 +21,9 @@ markersCrudRouter.get("/", function(req, res, next) {
  * Edit
  */
 markersCrudRouter.put("/:id", function(req, res, next) {
-  googleMapsClient
-    .geocode({ address: req.body.payload })
-    .asPromise()
+  GEOCODE.getGeoCode(req.body.payload)
     .then(data => {
-      let dataArray = data.json.results.map(item => {
+      let dataArray = data.map(item => {
         return {
           id: parseInt(req.params.id),
           formatted_address: item.formatted_address,

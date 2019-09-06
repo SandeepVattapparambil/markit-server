@@ -4,7 +4,6 @@ var autoCompleteRouter = express.Router({
 });
 
 let GoogleMaps = require("@google/maps");
-
 const googleMapsClient = GoogleMaps.createClient({
   key: googleMapsConfig.api_key,
   Promise: Promise

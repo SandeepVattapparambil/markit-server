@@ -1,6 +1,6 @@
 /**
  * @module MarkIt
- * MarkIt app
+ * MarkIt app module
  */
 
 /**
@@ -17,6 +17,11 @@ const logger = require("morgan");
  * import geoCode service
  */
 const geoCode = require("./services/geoCode");
+
+/**
+ * Create GEOCODE object as global so that the service
+ * can be accessed from anywhere in the app
+ */
 global.GEOCODE = geoCode;
 
 /**

@@ -1,3 +1,6 @@
+/**
+ * Middlewares index
+ */
 const express = require("express");
 const middlewareRouter = express.Router();
 

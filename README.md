@@ -21,6 +21,8 @@ npm start
 ##### 1. Index
 
 This endpoint gives the status of the markit api server
+
+
 `GET /`
 
 **response**
@@ -36,6 +38,8 @@ This endpoint gives the status of the markit api server
 ##### 2. List all Markers (Read)
 
 This endpoint gives the list of all markers created and stored in the server
+
+
 `GET /markers`
 
 **response**
@@ -69,6 +73,8 @@ This endpoint gives the list of all markers created and stored in the server
 ##### 3. Add a Marker (Create)
 
 This endpoint creates a marker in the server by taking in the address as input query
+
+
 `GET /search/:search_query`
 
 **response**
@@ -104,6 +110,8 @@ if the address provided is invalid or non-existent, then the response would look
 ##### 4. Edit a Marker (Update)
 
 This endpoint updates a marker in the server by taking in the new address as input query together with the id of the marker
+
+
 `PUT /markers/:id`
 
 payload body
@@ -137,6 +145,8 @@ if a non existent marker id is passed, then the response would look like:
 ##### 4. Delete a Marker (Delete)
 
 This endpoint deletes a marker when an id is passed with the request
+
+
 `DELETE /markers/:id`
 
 **response**

@@ -170,3 +170,22 @@ if a non existent marker id is passed, then the response would look like this:
   "message": "Marker not found"
 }
 ```
+
+### Guideline Questions
+
+#### 1. How do you handle configuration values ? What if those values change ?
+
+Configuration values are placed in a json file which is then imported and used in the code, without hardcoding.
+for example google maps api key is placed in `googleMapsConfig.json` file inside config folder, there fore key change has to be made in one place only.
+
+#### 2. What if we encounter an error with the third-party API integration ?
+
+Geocoding is implemented as a service module (`geoCode.js`) which is placed inside the services folder. This service can be imported and the promise based interface returns the resolved result or the rejected promise error object which is then used to send error response in json format.
+
+#### 3. Will it break our application, or they handled accordingly ?
+
+No it will not break the application as they are gracefully handled.
+
+#### 4. Changing the third-party API or refactoring the solution for future API changes seamlessly. How to do it in isolation ?
+
+As explained before, Geocoding is implemented as a service module (`geoCode.js`) which is placed inside the services folder. The API services are completely independent of the google maps geocoding, therefore any changes in the geocoding service will not affect the functionality of API services. Geocoding module exposes an object called `geoCodeLib` which has the method `getGeoCode()`, which returns the geocoding api response once resolved or the error object once rejected. Third party api changes can be done here.

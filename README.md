@@ -1,6 +1,6 @@
 # markit-server
 
-MarkIt server exposes the gecoding CRUD API endpoints
+MarkIt server exposes the gecoding CRUD API endpoints. This API is built using `Node.js` and `express.js`, therefore requires latest stable versions `Node.js` and `npm` installed on the host machine.
 
 ### How to run ?
 

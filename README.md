@@ -16,12 +16,18 @@ and then run the server using:
 npm start
 ```
 
+Then terminal logs the following line:
+
+```sh
+markit-server running successfully on port: 3001
+markit-server api can be accessed from: http://localhost:3001
+```
+
 #### Available End points
 
 ##### 1. Index
 
 This endpoint gives the status of the markit api server
-
 
 `GET /`
 
@@ -38,7 +44,6 @@ This endpoint gives the status of the markit api server
 ##### 2. List all Markers (Read)
 
 This endpoint gives the list of all markers created and stored in the server
-
 
 `GET /markers`
 
@@ -73,7 +78,6 @@ This endpoint gives the list of all markers created and stored in the server
 ##### 3. Add a Marker (Create)
 
 This endpoint creates a marker in the server by taking in the address as input query
-
 
 `GET /search/:search_query`
 
@@ -111,10 +115,9 @@ if the address provided is invalid or non-existent, then the response would look
 
 This endpoint updates a marker in the server by taking in the new address as input query together with the id of the marker
 
-
 `PUT /markers/:id`
 
-payload body
+payload body in json
 
 ```json
 {
@@ -145,7 +148,6 @@ if a non existent marker id is passed, then the response would look like:
 ##### 4. Delete a Marker (Delete)
 
 This endpoint deletes a marker when an id is passed with the request
-
 
 `DELETE /markers/:id`
 

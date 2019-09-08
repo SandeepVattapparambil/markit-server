@@ -71,4 +71,6 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
+  console.log(`markit-server running successfully on port: ${port}`);
+  console.log(`markit-server api can be accessed from: http://localhost:${port}`)
 }
